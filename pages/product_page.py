@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 class ProductPage:
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
 
     def description(self):
         return self.driver.find_element(By.CSS_SELECTOR, "#description-header")
