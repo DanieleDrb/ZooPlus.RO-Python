@@ -24,10 +24,10 @@ class HomePage:
             (By.XPATH, "//button[@id='onetrust-reject-all-handler']"
         ))).click()
 
-    def input_food_name(self):
+    def input_food_name(self, food_name):
         return self.wait.until(EC.presence_of_element_located(
             (By.CSS_SELECTOR, "#search_query_field_desktop")
-        )).send_keys("hrana uscata hills id")
+        )).send_keys(food_name)
 
     def search_button(self):
         time.sleep(1)
@@ -35,9 +35,14 @@ class HomePage:
             (By.XPATH, "//button[@data-zta='search_form_button_desktop']//*[name()='svg']")
         )).click()
 
-    def selected_product(self):
+    def selected_product_1(self):
         return self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, "//a[@id='594865']")
+        )).click()
+
+    def selected_product_2(self):
+        return self.wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//a[@id='1011019']")
         )).click()
 
 
