@@ -98,6 +98,27 @@ def test_assert_creation_of_pet_profile(home_page, login_page, pet_profile_page)
 
 
 @pytest.mark.priority(level=3)
+def test_upload_image(home_page, login_page, pet_profile_page):
+    # Email + password for login
+    user = Data().login()
+    # Open the website and accept cookie
+    home_page.open()
+    home_page.cookie_button()
+    # Go to the login page and login
+    home_page.my_zooplus_button()
+    login_page.login(user)
+    login_page.see_the_pets()
+    # Select the pet we have just created
+    pet_profile_page.select_created_pet_profile()
+    # Add the image from my PC
+    pet_profile_page.add_image()
+    # Save the image in the profile
+    pet_profile_page.save_button()
+    # Verify if the image is saved as expected
+    pet_profile_page.assert_presence_of_image()
+
+
+@pytest.mark.priority(level=4)
 def test_delete_pet_profile(home_page, login_page, pet_profile_page):
     # Email + password for login
     user = Data().login()
